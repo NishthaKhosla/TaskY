@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="./src/img/icon.png">
+    <title>TaskY</title>
+
+    <!-- Bootstrap CSS link. -->
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css"
+        integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We"
+        crossorigin="anonymous">
+
+    <!-- Fontawesome link. -->
+    <link rel="stylesheet"
+        href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+        integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
+        crossorigin="anonymous" />
+</head>
+
+<body class="body" style="background-color: rgba(89, 156, 231, 0.363)" onload="loadExistingCard()">
+
+    <!-- Navbar starts here. -->
+    <header class="sticky-top">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-lg">
+            <div class="container-fluid">
+
+                <!-- Brand name. -->
+                <a class="navbar-brand text-primary" href="#"><h3>TaskY</h3></a>
+
+                <!-- Hamburger menu for sm devices. -->
+                <button class="navbar-toggler"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent"
+                    aria-expanded="false"
+                    aria-label="Toggle navigation"
+                    >
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Navbar content. -->
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+                    <!-- List of page links. -->
+                    <ul class="navbar-nav ms-3 me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="#">Home</a>
+                        </li>
+                    </ul>
+
+                    <!-- Button to add new task. -->
+                    <button class="btn btn-primary ml-auto"
+                            type="button"
+                            data-bs-toggle="modal"
+                            data-bs-target="#newTask">
+                        <i class="far fa-plus"></i> New Task
+                    </button>
+
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main starts here. -->
+    <main class="container">
+
+        <!-- Search bar here. -->
+        <section class="row justify-content-center mt-5">
+            <div class="col-md-8 col-lg-6">
+                <div class="input-group mb-3 shadow-lg">
+                    
+                    <!-- Input task name. -->
+                    <input type="search"
+                        class="form-control"
+                        placeholder="Search Task"
+                        aria-label="Search Task"
+                        aria-describedby="basic-addon1"
+                    />
+                    <!-- Search icon. -->
+                    <span class="input-group-text" id="basic-addon1">
+                        <i class="fab fa-searchengin"></i>
+                    </span>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Task Container -->
+        <section class="task__container row my-4">
+            <!-- Cards will be added here using script. -->
+        </section>
+    </main>
+
+    <!-- Modal -->
+    <div class="modal fade"
+        id="newTask" tabindex="-1"
+        aria-labelledby=ModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <!-- Modal header. -->
+                <div class="modal-header">
+                    <!-- Modal title. -->
+                    <h5 class="modal-title" id="ModalLabel">Add New Task</h5>
+                    <!-- Close button. -->
+                    <button type="button"
+                            class="btn-close"
+                            data-bs-dismiss="modal"
+                            aria-label="Close">
+                    </button>
+                </div>
+                
+                <!-- Modal body. -->
+                <div class="modal-body">
+                    <form action="#">
+
+                        <!-- Image url section. -->
+                        <div class="mb-3">
+                            <label for="imgUrl" class="form-label">Image Url</label>
+                            <input type="url" class="form-control" id="imgUrl" placeholder="https://bit.ly/3AzGujo">
+                        </div>
+
+                        <!-- Task title section. -->
+                        <div class="mb-3">
+                            <label for="taskTitle" class="form-label">Task Title</label>
+                            <input type="text" class="form-control" id="taskTitle" placeholder="Cool Stuff">
+                        </div>
+
+                        <!-- Task Type section. -->
+                        <div class="mb-3">
+                            <label for="taskType" class="form-label">Task Type</label>
+                            <input type="text" class="form-control" id="taskType" placeholder="Cool">
+                        </div>
+
+                        <!-- Task describtion section. -->
+                        <div class="mb-3">
+                            <label for="taskDes" class="form-label">Task Description</label>
+                            <textarea name="taskDes"
+                                    id="taskDes"
+                                    class="form-control" 
+                                    rows="5"
+                                    placeholder="Do something cool"
+                            ></textarea>
+                        </div>
+
+                    </form>
+                </div>
+
+                <!-- Modal footer. -->
+                <div class="modal-footer">
+
+                    <!-- Close button -->
+                    <button type="button"
+                            class="btn btn-secondary"
+                            data-bs-dismiss="modal">
+                    Close
+                    </button>
+
+                    <!-- Save button -->
+                    <button type="button"
+                            class="btn btn-primary"
+                            data-bs-dismiss="modal"
+                            onclick="addCard()">
+                    Save changes
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</body>
+
+<!-- Bootstrap script. -->
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"
+        integrity="sha384-eMNCOe7tC1doHpGoWe/6oMVemdAVTMs2xqW4mwXrXsW0L84Iytr2wi5v2QjrP/xp"
+        crossorigin="anonymous">
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.min.js"
+        integrity="sha384-cn7l7gDp0eyniUwwAZgrzD06kc/tftFf19TOAs2zVinnD/C7E91j9yyk5//jjpt/"
+        crossorigin="anonymous">
+</script>
+
+<!-- My script. -->
+<script src="./src/index.js"></script>
+
+</html>
