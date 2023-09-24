@@ -8,7 +8,7 @@
 
 ## 🌐 Link
 
-<a href="https://shishirshekhar.github.io/TaskY/" target="_blank">shishirshekhar.github.io/TaskY</a>
+<a href="https://nishthakhosla.github.io/TaskY/" target="_blank">nishthakhosla.github.io/TaskY</a>
 
 ## 🏃‍♂️ Run app
 > open index.html
